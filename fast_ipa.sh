@@ -1,4 +1,4 @@
-#工程名称
+#工程名称 
 targetName=$1  
 #workspace文件 如没有 写 -
 workspace=$2
@@ -19,11 +19,9 @@ mkdir -p ${payloadPath} ${buildPath}
 
 if [ ${workspace} = "-" ]
 then
-   echo 'going to JD'
    xcodebuild -scheme ${targetName} -derivedDataPath  ${buildPath} -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 else
-   echo 'going to workspace'
- xcodebuild -workspace ${workspace} -scheme ${targetName} -sdk iphoneos -derivedDataPath  ${buildPath} -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+   xcodebuild -workspace ${workspace} -scheme ${targetName} -sdk iphoneos -derivedDataPath  ${buildPath} -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 fi
 
 cp -r ${appFileFullPath} ${payloadPath}
